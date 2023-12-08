@@ -1,0 +1,14 @@
+@import '../../scss/variables';
+
+
+.header {
+    height: 60px;
+    padding: 13px 0 13px 0;
+    background: #fff;
+    
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

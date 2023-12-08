@@ -1,0 +1,28 @@
+@import '../../scss/variables';
+
+.btn {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 34px;
+    border-radius: 80px;
+    font-size: 16px;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    &.primary {
+        color: $primary-text-color;
+        background: $primary-color;
+    }
+    &.secondary {
+        color: #ffffffde;
+        background: #B4B4B4;
+    }
+    &:hover {
+        background: #FFE302
+    }
+    &:disabled {
+        color: #ffffffde;
+        background: $background-color;
+    }
+}

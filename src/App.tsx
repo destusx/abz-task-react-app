@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import FormBlock from './components/FormBlock/FormBlock';
+import Header from './components/Header/Header';
+import Promotion from './components/Promotion/Promotion';
+import UserList from './components/User/UserList/UserList';
+import './scss/app.scss';
+import { useUserStore } from './store/useUserStore';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const getToken = useUserStore(state => state.getToken);
+
+    useEffect(() => {
+        getToken();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    return (
+        <main>
+            <Header />
+            <Promotion />
+            <UserList />
+            <FormBlock />
+        </main>
+    );
 }
 
 export default App;

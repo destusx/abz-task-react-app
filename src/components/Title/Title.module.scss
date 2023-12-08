@@ -1,0 +1,15 @@
+@import '../../scss/variables';
+
+.title {
+    color: #FFF;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 40px;
+    &.primary {
+        color: $primary-text-color;
+    }
+    &.white {
+        color: #fff;
+    }
+}

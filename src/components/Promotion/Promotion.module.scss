@@ -1,0 +1,38 @@
+@import '../../scss/variables';
+
+.promotion {
+    height: 650px;
+    padding: 164px 0 163px 0;
+    background-image: url('../../assets/img/bg.webp');
+    background-image: image-set(
+        url('../../assets/img/bg.jpg')
+        url('../../assets/img/bg.webp')
+
+    );
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @media (max-width: 1200px) {
+        background-size: cover;;
+    }
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.descr {
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    margin-top: 21px;
+    line-height: 26px;
+}
