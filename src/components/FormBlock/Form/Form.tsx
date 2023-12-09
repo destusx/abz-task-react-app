@@ -35,6 +35,10 @@ const Form = () => {
     };
 
     const onSubmit: SubmitHandler<IFormInput> = async data => {
+        if (!file) {
+            return alert('You need to add Image');
+        }
+
         if (positionId && file) {
             const formData = new FormData();
             formData.append('position_id', positionId.toString());

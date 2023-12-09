@@ -6,6 +6,7 @@ import { AddUser, getPositions, getToken, getUsers } from '../services/UserServi
 type State = {
     token: string | null;
     users: IUser[];
+    userCount: number;
     userOffset: number;
     userEnded: boolean;
     positions: IPosition[];
@@ -13,7 +14,7 @@ type State = {
 };
 
 type Action = {
-    getUsers: (offset: number) => Promise<void>;
+    getUsers: (offset: number, count: number) => Promise<void>;
     getPositions: () => Promise<void>;
     addUser: (user: FormData, token: string | null) => Promise<ISuccessRegistration>;
     getToken: () => Promise<void>;
@@ -24,13 +25,14 @@ interface IUserStore extends State, Action {}
 export const useUserStore = create<IUserStore>()(set => ({
     token: null,
     users: [],
-    userOffset: 6,
+    userCount: 6,
+    userOffset: 0,
     userEnded: false,
     positions: [],
     loading: false,
-    getUsers: async offset => {
+    getUsers: async (offset, count) => {
         set({ loading: true });
-        const users = await getUsers(offset);
+        const users = await getUsers(offset, count);
 
         set(state => ({
             users: [...state.users, ...users],

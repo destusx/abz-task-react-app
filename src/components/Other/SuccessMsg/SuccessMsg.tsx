@@ -2,7 +2,7 @@ import Title from '../../Title/Title';
 
 const SuccessMsg = () => {
     return (
-        <div style={{ marginTop: 5 }}>
+        <div style={{ marginTop: 15 }}>
             <Title color="primary">User successfully registered</Title>
             <svg
                 width="328"

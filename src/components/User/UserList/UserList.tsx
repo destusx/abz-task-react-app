@@ -8,13 +8,14 @@ import { useUserStore } from '../../../store/useUserStore';
 import styles from './UserList.module.scss';
 
 const UserList = () => {
-    const [getUsers, userList, loading, userOffset, userEnded] = useUserStore(
+    const [getUsers, userList, loading, offset, userEnded, count] = useUserStore(
         state => [
             state.getUsers,
             state.users,
             state.loading,
             state.userOffset,
             state.userEnded,
+            state.userCount,
         ]
     );
 
@@ -23,7 +24,7 @@ const UserList = () => {
     );
 
     useEffect(() => {
-        getUsers(userOffset);
+        getUsers(offset, count);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -36,7 +37,7 @@ const UserList = () => {
             </div>
             <Button
                 style={{ display: userEnded ? 'none' : 'block' }}
-                onClick={() => getUsers(userOffset)}
+                onClick={() => getUsers(offset, count)}
                 disabled={loading}
                 color="primary"
             >
