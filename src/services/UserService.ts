@@ -5,42 +5,14 @@ import {
     IUser,
     IUserApiResponse,
 } from '../types/user.types';
-
-const request = async (
-    url: string,
-    method: 'GET' | 'POST' = 'GET',
-    body: string | null = null,
-    token?: string | null
-) => {
-    try {
-        const res = await fetch(url, {
-            method,
-            body,
-            headers: {
-                Token: token,
-            } as any,
-        });
-
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-        }
-
-        const data = await res.json();
-
-        return data;
-    } catch (error) {
-        throw error;
-    }
-};
+import { request } from '../utils/request';
 
 const _apiBase = 'https://frontend-test-assignment-api.abz.agency/api/v1/';
 const _baseCount = 6;
 const _baseOffset = 0;
 
 export const getToken = async (): Promise<ITokenResponse> => {
-    const tokenResponse = await fetch(
-        'https://frontend-test-assignment-api.abz.agency/api/v1/token'
-    );
+    const tokenResponse = await fetch(`${_apiBase}token`);
 
     return await tokenResponse.json();
 };

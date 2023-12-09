@@ -39,6 +39,10 @@ const Form = () => {
             return alert('You need to add Image');
         }
 
+        if (!positionId) {
+            return alert('You need to select position');
+        }
+
         if (positionId && file) {
             const formData = new FormData();
             formData.append('position_id', positionId.toString());
